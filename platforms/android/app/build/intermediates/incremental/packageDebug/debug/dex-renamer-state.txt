@@ -1,0 +1,4 @@
+#Mon Aug 13 09:47:36 CEST 2018
+base.0=/repos/compteur-belote/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+renamed.0=classes.dex
+file.0=/repos/compteur-belote/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0/classes.dex
