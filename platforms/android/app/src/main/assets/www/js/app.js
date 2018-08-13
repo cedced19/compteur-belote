@@ -22,6 +22,8 @@ phonon.navigator().on({
         var nous = JSON.parse(localStorage.getItem('nous')) || [];
         var vous = JSON.parse(localStorage.getItem('vous')) || [];
         var noGameWarning = document.getElementById('no-game');
+        var belote = document.getElementById('belote');
+        var beloteForOthers = document.getElementById('belote-for-others');
 
         function getTotal (list, id) {
             var count = 0;
@@ -62,10 +64,9 @@ phonon.navigator().on({
         document.getElementById('add-nous').on('click', function() {
             var valN = Number(scoreInput.value);
             var valV = 162 - Number(scoreInput.value);
-            if (belote.checked) {
-                valN+= 20;
-            }
-            if (valN>250) valV = 0;
+            if (belote.checked) valN+= 20;
+            if (beloteForOthers.checked) valV+= 20;
+            if (valN>=250) valV = 0;
             nous.push(valN);
             vous.push(valV);
             localStorage.setItem('nous', JSON.stringify(nous));
@@ -73,15 +74,15 @@ phonon.navigator().on({
             showScore(nous.length, valN, valV);
             scoreInput.value = '';
             belote.checked = false;
+            beloteForOthers.checked = false;
         });
         
         document.getElementById('add-vous').on('click', function() {
             var valV = Number(scoreInput.value);
             var valN = 162 - Number(scoreInput.value);
-            if (belote.checked) {
-                valV+= 20;
-            }
-            if (valV>250) valN = 0;
+            if (belote.checked) valV+= 20;
+            if (beloteForOthers.checked) valN+= 20;
+            if (valV>=250) valN = 0;
             nous.push(valN);
             vous.push(valV);
             localStorage.setItem('nous', JSON.stringify(nous));
@@ -89,6 +90,7 @@ phonon.navigator().on({
             showScore(nous.length, valN, valV);
             scoreInput.value = '';
             belote.checked = false;
+            beloteForOthers.checked = false;
         });
 
         document.getElementById('remove-last').on('click', function() {
