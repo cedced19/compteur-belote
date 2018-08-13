@@ -1,0 +1,53 @@
+<home class="app-page">
+    <header class="header-bar">
+        <div class="center">
+            <h1 class="title">Compteur Belote</h1>
+        </div>
+    </header>
+    <div class="content">
+
+
+        <div class="padded-full">
+
+            <div class="row text-center table">
+                <div class="tablet-2 large-2 phone-2 column table-leader">n°</div>
+                <div class="tablet-5 large-5 phone-5 column table-leader">Nous</div>
+                <div class="tablet-5 large-5 phone-5 column table-leader">Vous</div>
+            </div>
+            <div class="row text-center table" id="no-game">
+                Aucune partie enregistée.
+            </div>
+
+            <div id="score"></div>
+            <div class="padded-bottom"></div>
+            <h2>Ajouter une partie</h2>
+            <input type="number" placeholder="Score" id="score-input">
+            <div class="padded-bottom"></div>
+            <ul class="list">
+                <li class="padded-for-list">
+                    <label class="checkbox">
+                        <input type="checkbox" name="belote" id="belote">
+                        <span></span>
+                        Belote
+                    </label>
+                </li>
+            </ul>
+            <div class="row text-center table">
+                <div class="tablet-6 large-6 phone-6 column table-leader">Nous</div>
+                <div class="tablet-6 large-6 phone-6 column table-leader">Vous</div>
+            </div>
+            <div class="row text-center table">
+                <div class="tablet-6 large-6 phone-6 column table-item">
+                    <i class="icon icon-add with-circle" id="add-nous"></i>
+                </div>
+                <div class="tablet-6 large-6 phone-6 column table-item">
+                    <i class="icon icon-add with-circle" id="add-vous"></i>
+                </div>
+            </div>
+            <div class="padded-bottom"></div>
+            <h2>Autre</h2>
+            <button class="btn fit-parent" id="remove-last">Supprimer la dernière partie</button>
+            <div class="padded-bottom"></div>
+            <button class="btn fit-parent" id="reset">Reset</button>
+        </div>
+</home>
