@@ -72,6 +72,7 @@ phonon.navigator().on({
             localStorage.setItem('vous', JSON.stringify(vous));
             showScore(nous.length, valN, valV);
             scoreInput.value = '';
+            belote.checked = false;
         });
         
         document.getElementById('add-vous').on('click', function() {
@@ -87,6 +88,7 @@ phonon.navigator().on({
             localStorage.setItem('vous', JSON.stringify(vous));
             showScore(nous.length, valN, valV);
             scoreInput.value = '';
+            belote.checked = false;
         });
 
         document.getElementById('remove-last').on('click', function() {
@@ -95,6 +97,9 @@ phonon.navigator().on({
             localStorage.setItem('nous', JSON.stringify(nous));
             localStorage.setItem('vous', JSON.stringify(vous));
             scoreDiv.removeChild(scoreDiv.lastChild);
+            if (scoreDiv.childNodes.length == 0) {
+                noGameWarning.style.display = 'block';
+            }
         });
 
         document.getElementById('reset').on('click', function() {
