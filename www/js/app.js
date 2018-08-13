@@ -65,7 +65,7 @@ phonon.navigator().on({
             if (belote.checked) {
                 valN+= 20;
             }
-            if (valN>250) valV = 0;
+            if (valN>=250) valV = 0;
             nous.push(valN);
             vous.push(valV);
             localStorage.setItem('nous', JSON.stringify(nous));
@@ -81,7 +81,7 @@ phonon.navigator().on({
             if (belote.checked) {
                 valV+= 20;
             }
-            if (valV>250) valN = 0;
+            if (valV>=250) valN = 0;
             nous.push(valN);
             vous.push(valV);
             localStorage.setItem('nous', JSON.stringify(nous));
