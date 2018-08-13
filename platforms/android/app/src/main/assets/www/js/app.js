@@ -33,7 +33,7 @@ phonon.navigator().on({
             return count;
         }
 
-        function showScore(id, n, v) {
+        function showScore(id) {
             var mainDiv = document.createElement('div');
             mainDiv.classList.add('row', 'text-center', 'table');
 
@@ -43,12 +43,22 @@ phonon.navigator().on({
             mainDiv.appendChild(idDiv);
 
             var nousDiv = document.createElement('div');
-            nousDiv.innerHTML = getTotal(nous, id);
+            var countNousDiv = document.createElement('div');
+            countNousDiv.innerHTML = nous[id-1];
+            nousDiv.appendChild(countNousDiv);
+            var totalNousDiv = document.createElement('b');
+            totalNousDiv.innerHTML = getTotal(nous, id);
+            nousDiv.appendChild(totalNousDiv);
             nousDiv.classList.add('tablet-5', 'large-5', 'phone-5', 'column', 'table-item');
             mainDiv.appendChild(nousDiv);
 
             var vousDiv = document.createElement('div');
-            vousDiv.innerHTML = getTotal(vous, id);;
+            var countVousDiv = document.createElement('div');
+            countVousDiv.innerHTML = vous[id-1];
+            vousDiv.appendChild(countVousDiv);
+            var totalVousDiv = document.createElement('b');
+            totalVousDiv.innerHTML = getTotal(vous, id);
+            vousDiv.appendChild(totalVousDiv);
             vousDiv.classList.add('tablet-5', 'large-5', 'phone-5', 'column', 'table-item');
             mainDiv.appendChild(vousDiv);
 
@@ -64,14 +74,14 @@ phonon.navigator().on({
         document.getElementById('add-nous').on('click', function() {
             var valN = Number(scoreInput.value);
             var valV = 162 - Number(scoreInput.value);
+            if (valN>=250) valV = 0;
             if (belote.checked) valN+= 20;
             if (beloteForOthers.checked) valV+= 20;
-            if (valN>=250) valV = 0;
             nous.push(valN);
             vous.push(valV);
             localStorage.setItem('nous', JSON.stringify(nous));
             localStorage.setItem('vous', JSON.stringify(vous));
-            showScore(nous.length, valN, valV);
+            showScore(nous.length);
             scoreInput.value = '';
             belote.checked = false;
             beloteForOthers.checked = false;
@@ -80,14 +90,14 @@ phonon.navigator().on({
         document.getElementById('add-vous').on('click', function() {
             var valV = Number(scoreInput.value);
             var valN = 162 - Number(scoreInput.value);
+            if (valV>=250) valN = 0;
             if (belote.checked) valV+= 20;
             if (beloteForOthers.checked) valN+= 20;
-            if (valV>=250) valN = 0;
             nous.push(valN);
             vous.push(valV);
             localStorage.setItem('nous', JSON.stringify(nous));
             localStorage.setItem('vous', JSON.stringify(vous));
-            showScore(nous.length, valN, valV);
+            showScore(nous.length);
             scoreInput.value = '';
             belote.checked = false;
             beloteForOthers.checked = false;

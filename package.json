@@ -5,6 +5,10 @@
     "description": "A simple app to count point of a Belote game.",
     "author": "Cédric JUNG <cedced19@gmail.com>",
     "license": "MIT",
+    "scripts": {
+        "start": "cd www/ && ripple emulate ./",
+        "build": "cordova build --release android"
+    },
     "dependencies": {
         "cordova-android": "^7.0.0",
         "cordova-plugin-whitelist": "^1.3.3"
