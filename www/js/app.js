@@ -21,7 +21,7 @@ phonon.navigator().on({
         var scoreInput = document.getElementById('score-input');
         var nous = JSON.parse(localStorage.getItem('nous')) || [];
         var vous = JSON.parse(localStorage.getItem('vous')) || [];
-
+        var noGameWarning = document.getElementById('no-game');
 
         function getTotal (list, id) {
             var count = 0;
@@ -51,6 +51,7 @@ phonon.navigator().on({
             mainDiv.appendChild(vousDiv);
 
             scoreDiv.appendChild(mainDiv);
+            noGameWarning.style.display = 'none';
         }
 
 
@@ -70,6 +71,7 @@ phonon.navigator().on({
             localStorage.setItem('nous', JSON.stringify(nous));
             localStorage.setItem('vous', JSON.stringify(vous));
             showScore(nous.length, valN, valV);
+            scoreInput.value = '';
         });
         
         document.getElementById('add-vous').on('click', function() {
@@ -84,6 +86,15 @@ phonon.navigator().on({
             localStorage.setItem('nous', JSON.stringify(nous));
             localStorage.setItem('vous', JSON.stringify(vous));
             showScore(nous.length, valN, valV);
+            scoreInput.value = '';
+        });
+
+        document.getElementById('remove-last').on('click', function() {
+            nous.pop();
+            vous.pop();
+            localStorage.setItem('nous', JSON.stringify(nous));
+            localStorage.setItem('vous', JSON.stringify(vous));
+            scoreDiv.removeChild(scoreDiv.lastChild);
         });
 
         document.getElementById('reset').on('click', function() {
@@ -94,6 +105,7 @@ phonon.navigator().on({
             while (scoreDiv.firstChild) {
                 scoreDiv.removeChild(scoreDiv.firstChild);
             }
+            noGameWarning.style.display = 'block';
         });
     });
 });
